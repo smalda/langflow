@@ -43,11 +43,13 @@ The platform utilizes a modern, scalable architecture:
 
 ```mermaid
 graph TB
-    A[Telegram Bot] --> B[FastAPI Backend]
-    B --> C[PostgreSQL]
-    B --> D[RabbitMQ]
-    D --> E[Notification Service]
-    B --> F[OpenAI LLM]
+    A[Telegram Bot] <--> B[FastAPI Backend]
+    B <--> C[PostgreSQL]
+    B --> D[RabbitMQ Producer]
+    D --> E[Notifications Consumer]
+    B <--> F[OpenAI LLM]
+    A <--> F
+    E --> A
 
     subgraph "Core Services"
         B
