@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  test:
+    build:
+      context: ..
+      dockerfile: docker/api/Dockerfile
+    command: pytest
+    environment:
+      - DATABASE_URL=${TEST_DATABASE_URL}
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
