@@ -30,3 +30,5 @@ coverage.xml
 
 # Logs
 *.log
+
+.vscode/
